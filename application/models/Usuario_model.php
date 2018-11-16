@@ -9,7 +9,7 @@ class Usuario_model extends CI_Model {
         parent::__construct();
     }
 
-    function getUsuario($id) {
+    function get($id) {
         $this->db->select('*')
                 ->from('usuarios')
                 ->where('id', $id);
@@ -21,7 +21,7 @@ class Usuario_model extends CI_Model {
         }
     }
     
-    function insertUsuario($data) {
+    function insert($data) {
         $data['senha'] = password_hash($data['senha'], PASSWORD_DEFAULT);
         $this->db->insert('usuarios', $data);
         $usuario_id = $this->db->insert_id();
@@ -32,7 +32,7 @@ class Usuario_model extends CI_Model {
         }
     }
 
-    function updateUsuario($data, $id) {
+    function update($data, $id) {
         $data['senha'] = password_hash($data['senha'], PASSWORD_DEFAULT);
         $this->db->where('id', $id);
         $this->db->update('usuarios', $data);

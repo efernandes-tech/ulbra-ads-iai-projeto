@@ -53,10 +53,10 @@ $route['default_controller'] = 'Urls';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['login'] = "User/Login";
-$route['logout'] = "User/Logout";
-$route['user'] = "User/Index";
-$route['user/register'] = "User/Register";
-$route['minhas-urls'] = "User/Urls";
-$route['alterar-senha'] = "User/UpdatePassw";
+$route['login'] = "Usuario/Login";
+$route['logout'] = "Usuario/Logout";
+$route['user'] = "Usuario/Index";
+$route['user/register'] = "Usuario/Register";
+$route['minhas-urls'] = "Usuario/Urls";
+$route['alterar-senha'] = "Usuario/UpdatePassw";
 $route['(:any)'] = "Urls/Go";
