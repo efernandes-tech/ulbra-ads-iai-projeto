@@ -60,4 +60,6 @@ $route['usuario'] = "Usuario/Index";
 $route['novo-usuario'] = "Usuario/Cadastrar";
 $route['alterar-senha'] = "Usuario/AlterarSenha";
 $route['meus-baralhos'] = "Usuario/Baralhos";
-$route['baralho/(:num)'] = "Usuario/Baralho/$1";
+
+$route['baralho/(:num)'] = "Baralho/Index/$1";
+$route['revisar/(:num)'] = "Baralho/Revisar/$1";

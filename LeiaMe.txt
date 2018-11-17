@@ -1,0 +1,28 @@
+- To Do List:
+[] home - listar os 3 temas mais usados
+	() btn - para acessar pagina do tema
+	() btn - para acessar pagina de temas
+		() - tela para pesquisar temas
+[] home - listar os 3 baralhos mais usados do tema clicado
+	() btn - para acessar pagina de baralhos do tema
+		() - tela para pesquisar baralhos
+			() - botao para trocar tema
+[] home - no baralho permitir estudar (flashcards) e jogar (jogo da memoria)
+
+[] tela baralho - flashcards - mostrar estatisticas
+	[] total de cartas, total de cartas para revisar
+	[] botao para iniciar a revisao
+[] revisao - mostrar contador 1/10
+	[] mostrar a frente
+		[] botao para virar
+	[] mostrar verso
+		[] botoes para classificar facil, bom, dificil
+	[] atualizar contador e ir para proximo
+
+[] tela do jogo - gerar os card virados e botao de iniciar
+	[] cabecalho com estatisticas, contador de tempo, pontos
+		[] acerto = 100   +   300 - segundo (5min)
+	[] iniciar o contador de tempo
+	[] ao clicar na carta ela vira
+	[] se as duas viradas forem relacionadas pontua e se mantem viradas
+	[] todas forem viradas finaliza o jogo e da a pontuacao

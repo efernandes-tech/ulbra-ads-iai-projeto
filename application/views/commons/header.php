@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Jogo da Memória">
+        <meta name="description" content="MemoryFlashGame">
         <meta name="author" content="Éderson Fernandes">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/img/logo-24.png') ?>"/>
-        <title>Jogo da Memória</title>
+        <title>MemoryFlashGame</title>
         <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 
         <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -39,7 +39,9 @@
                     </button>
                     <a class="navbar-brand" href="<?php echo base_url() ?>">
                         <img src="<?php echo base_url('assets/img/logo-24-white.png') ?>" alt="Logo" class="home-logo">
-                        Jogo da Memória
+                        MemoryFlashGame
+                        &nbsp;|&nbsp;
+                        <span class="text-size-12">Cartões Educativos e Jogo da Memória</span>
                     </a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">

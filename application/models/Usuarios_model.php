@@ -47,4 +47,17 @@ class Usuarios_model extends CI_Model {
         return $results;
     }
 
+    function GetByEmail($email) {
+        $this->db->select('*')
+            ->from('usuarios')
+            ->where('email', $email);
+        $result = $this->db->get()->result();
+        if ($result) {
+            return $result[0];
+        } else {
+            return false;
+        }
+    }
+
+
 }

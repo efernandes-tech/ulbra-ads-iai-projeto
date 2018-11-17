@@ -46,7 +46,7 @@ class Usuario extends CI_Controller {
 
     public function Cadastrar() {
         $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[3]|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|min_length[1]|valid_email|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|min_length[1]|valid_email|trim|callback_email_nao_cadastrado');
         $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[6]|trim');
         if ($this->form_validation->run() == FALSE) {
             $data['error'] = validation_errors();
@@ -91,6 +91,16 @@ class Usuario extends CI_Controller {
         $data['baralhos'] = $baralhos;
         $data['error'] = null;
         $this->load->view('meus-baralhos', $data);
+    }
+
+    public function email_nao_cadastrado($email) {
+        $usuario = $this->Usuarios_model->GetByEmail($email);
+        if ($usuario !== FALSE) {
+            $this->form_validation->set_message("email_nao_cadastrado", "O email '%s' já está cadastrado.");
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
 }
