@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <span>1</span> / <span><?php echo count($cartas) ?></span>
+                    <span id="contCartas">1</span> / <span id="totalCartas"><?php echo count($cartas) ?></span>
                 </div>
             </div>
             <div class="row div-revisao">
@@ -51,14 +51,80 @@
                     <?php endforeach ?>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-default" id="btnMostrarVerso">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        Mostrar
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                        Facil
+                        <span class="badge">1 dia</span>
+                    </button>
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                        Bom
+                        <span class="badge">3 dias</span>
+                    </button>
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                        Difícil
+                        <span class="badge">7 dias</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+function salvarResposta() {
+    alert('Salvando...');
+}
 $(document).ready(function() {
-    
-    $('.carta-frente').first().removeClass('hide');
+
+    $('.carta-frente').first().removeClass('hide').parents('.carta').addClass('current');
+
+    $('.btnRevisao').addClass('hide');
+
+    $(document).on('click', '#btnMostrarVerso', function(event) {
+        event.preventDefault();
+
+        $(".current").find('.carta-verso').removeClass('hide');
+
+        $("#btnMostrarVerso").addClass('hide');
+
+        $('.btnRevisao').removeClass('hide');
+    });
+
+    $(document).on('click', '.btnRevisao', function(event) {
+        event.preventDefault();
+
+        let contCartas = parseInt($("#contCartas").html());
+        let totalCartas = parseInt($("#totalCartas").html());
+
+        salvarResposta();
+
+        $('#contCartas').html(contCartas+1);
+
+        $('.current').next().addClass('current');
+
+        $('.current').first().removeClass('current').addClass('hide');
+
+        $('.current').find('.carta-frente').removeClass('hide');
+
+        $('.btnRevisao').addClass('hide');
+
+        $('#btnMostrarVerso').removeClass('hide');
+
+        if (contCartas == totalCartas) {
+            alert('Fim...');
+            window.location.reload();
+        }
+    });
 
 });
 </script>

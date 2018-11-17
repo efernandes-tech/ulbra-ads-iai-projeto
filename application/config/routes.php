@@ -63,3 +63,6 @@ $route['meus-baralhos'] = "Usuario/Baralhos";
 
 $route['baralho/(:num)'] = "Baralho/Index/$1";
 $route['revisar/(:num)'] = "Baralho/Revisar/$1";
+
+$route['jogo/(:num)'] = "Jogo/Index/$1";
+$route['jogar/(:num)'] = "Jogo/Jogar/$1";

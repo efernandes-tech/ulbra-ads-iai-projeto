@@ -18,7 +18,7 @@
                             <a class="btn btn-info" href="<?php echo base_url('baralho/'.$baralho->id) ?>">
                                 Estudar
                             </a>
-                            <a class="btn btn-primary" href="<?php echo base_url('jogar/'.$baralho->id) ?>">
+                            <a class="btn btn-primary" href="<?php echo base_url('jogo/'.$baralho->id) ?>">
                                 Jogar
                             </a>
                         </div>
