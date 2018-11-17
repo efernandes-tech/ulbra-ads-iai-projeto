@@ -61,7 +61,11 @@ $route['novo-usuario'] = "Usuario/Cadastrar";
 $route['alterar-senha'] = "Usuario/AlterarSenha";
 $route['meus-baralhos'] = "Usuario/Baralhos";
 
+$route['temas'] = "Tema/Index";
+$route['tema/(:num)'] = "Tema/Index/$1";
+
 $route['baralho/(:num)'] = "Baralho/Index/$1";
+$route['salvar-baralho'] = "Baralho/Salvar";
 $route['revisar/(:num)'] = "Baralho/Revisar/$1";
 
 $route['jogo/(:num)'] = "Jogo/Index/$1";

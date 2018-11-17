@@ -8,12 +8,20 @@ class Baralho extends CI_Controller {
     }
 
     public function Index($id = false) {
-    	if (!$id) {
-    		redirect(base_url(), 'refresh');
-    	}
-        $this->load->model('Baralhos_model');
+        if ($id) {
+            $data['title'] = 'Editar';
 
-        $data['baralho'] = $this->Baralhos_model->GetBy($id);
+            $this->load->model('Baralhos_model');
+
+            $data['baralho'] = $this->Baralhos_model->GetBy($id);
+        } else {
+            $data['title'] = 'Cadastrar';
+
+            $data['baralho'] = (object) array(
+                'id' => null,
+                'nome' => '',
+            );
+        }
 
         $this->load->view('baralho', $data);
     }
@@ -29,6 +37,13 @@ class Baralho extends CI_Controller {
         $data['cartas'] = $this->Cartas_model->GetAllBy($id);
 
         $this->load->view('revisar', $data);
+    }
+
+    public function Salvar() {
+        $data = $this->input->post();
+        print_r($data);
+        // die();
+        redirect(base_url('meus-baralhos'),'refresh');
     }
 
 }

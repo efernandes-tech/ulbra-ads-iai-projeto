@@ -8,13 +8,13 @@
         <h2 class="col-md-12">Login</h2>
         <form action="<?php echo base_url('login'); ?>" method="POST">
             <label class="col-md-12">
-                <input type="text" class="hide" name="email"/>
+                <input type="text" name="email" style="display: none;" />
                 <input type="text" class="form-control" placeholder="Email" name="email" required autofocus/>
             </label>
             <label class="col-md-12">
                 <input type="password" class="form-control" placeholder="Senha" name="senha" required/>
             </label>
-            <label class="col-md-12"><input type="submit" class="btn btn-success" value="Entrar"/></label>
+            <label class="col-md-12"><input type="submit" class="btn btn-primary btn-block" value="Entrar"/></label>
         </form>
     </div>
     <div class="col-md-4 col-md-offset-1">
@@ -24,13 +24,13 @@
                 <input type="text" class="form-control" placeholder="Nome" name="nome" required/>
             </label>
             <label class="col-md-12">
-                <input type="text" class="hide" name="email"/>
+                <input type="text" name="email" style="display: none;" />
                 <input type="text" class="form-control" placeholder="Email" name="email" required/>
             </label>
             <label class="col-md-12">
                 <input type="password" class="form-control" placeholder="Senha" name="senha" required/>
             </label>
-            <label class="col-md-12"><input type="submit" class="btn btn-success" value="Cadastrar"/></label>
+            <label class="col-md-12"><input type="submit" class="btn btn-primary btn-block" value="Cadastrar"/></label>
         </form>
     </div>
 </div>

@@ -20,8 +20,9 @@ class Baralhos_model extends CI_Model {
     }
 
     function GetAllBy($usuario_id) {
-        $this->db->select('*')
-            ->from('baralhos')
+        $this->db->select('b.*, t.nome AS tema')
+            ->from('baralhos b')
+            ->join('temas t', 't.id = b.tema_id', 'inner')
             ->where('usuario_id', $usuario_id);
         $result = $this->db->get()->result();
         if ($result) {
@@ -50,9 +51,24 @@ class Baralhos_model extends CI_Model {
     ///// /////
 
     function GetAllPublic() {
-        $this->db->select('*')
-            ->from('baralhos')
+        $this->db->select('b.*, t.nome AS tema')
+            ->from('baralhos b')
+            ->join('temas t', 't.id = b.tema_id', 'inner')
             ->where('publico', 1);
+        $result = $this->db->get()->result();
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
+    function GetAllPublicBy($tema_id) {
+        $this->db->select('b.*, t.nome AS tema')
+            ->from('baralhos b')
+            ->join('temas t', 't.id = b.tema_id', 'inner')
+            ->where('publico', 1)
+            ->where('tema_id', $tema_id);
         $result = $this->db->get()->result();
         if ($result) {
             return $result;

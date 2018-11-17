@@ -25,7 +25,7 @@ class Usuario extends CI_Controller {
                         $this->session->set_userdata('logged', true);
                         $this->session->set_userdata('email', $result->email);
                         $this->session->set_userdata('id', $result->id);
-                        redirect();
+                        redirect(base_url('meus-baralhos'), 'refresh');
                     } else {
                         $data['error'] = "Senha incorreta.";
                     }
@@ -41,7 +41,7 @@ class Usuario extends CI_Controller {
         $this->session->unset_userdata('logged');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('id');
-        redirect();
+        redirect(base_url(), 'refresh');
     }
 
     public function Cadastrar() {
@@ -65,7 +65,7 @@ class Usuario extends CI_Controller {
             $this->session->set_userdata('logged', true);
             $this->session->set_userdata('email', $res->email);
             $this->session->set_userdata('id', $res->id);
-            redirect();
+            redirect(base_url(), 'refresh');
         }
     }
 

@@ -8,9 +8,11 @@ class Home extends CI_Controller {
     }
 
     public function Index() {
+        $this->load->model('Temas_model');
         $this->load->model('Baralhos_model');
 
-        $data['baralhos'] = $this->Baralhos_model->getAllPublic();
+        $data['temas'] = $this->Temas_model->GetAll();
+        $data['baralhos'] = $this->Baralhos_model->GetAllPublic();
 
         $this->load->view('home', $data);
     }

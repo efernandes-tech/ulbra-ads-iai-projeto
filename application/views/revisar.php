@@ -15,6 +15,11 @@
                 </div>
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="6" class="text-center">Estatísticas</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
                                 <th scope="row" width="20%">Total de Cartas</th>
@@ -122,7 +127,7 @@ $(document).ready(function() {
 
         if (contCartas == totalCartas) {
             alert('Fim...');
-            window.location.reload();
+            window.location.href = $('base').attr('href') + '/meus-baralhos';
         }
     });
 
