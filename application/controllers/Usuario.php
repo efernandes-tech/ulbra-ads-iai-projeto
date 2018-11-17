@@ -5,19 +5,19 @@ class Usuario extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Usuario_model');
+        $this->load->model('Usuarios_model');
         $this->load->library('form_validation');
     }
 
     public function Login()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|min_length[1]|valid_email|trim');
-        $this->form_validation->set_rules('passw', 'Senha', 'required|min_length[6]|trim');
+        $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[6]|trim');
         if ($this->form_validation->run() == FALSE) {
             $data['error'] = validation_errors();
         } else {
             $dataLogin = $this->input->post();
-            $res = $this->Usuario_model->login($dataLogin);
+            $res = $this->Usuarios_model->Login($dataLogin);
             if ($res) {
                 foreach ($res as $result) {
                     if (password_verify($dataLogin['senha'], $result->senha)) {
@@ -36,23 +36,23 @@ class Usuario extends CI_Controller {
         }
         $this->load->view('login', $data);
     }
-    
+
     public function Logout() {
         $this->session->unset_userdata('logged');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('id');
         redirect();
     }
-    
-    public function Register() {
-        $this->form_validation->set_rules('name', 'Nome', 'required|min_length[3]|trim');
+
+    public function Cadastrar() {
+        $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[3]|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|min_length[1]|valid_email|trim');
         $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[6]|trim');
         if ($this->form_validation->run() == FALSE) {
             $data['error'] = validation_errors();
         } else {
             $dataRegister = $this->input->post();
-            $res = $this->Usuario_model->insert($dataRegister);
+            $res = $this->Usuarios_model->Insert($dataRegister);
             if ($res) {
                 $data['error'] = null;
             } else {
@@ -68,30 +68,29 @@ class Usuario extends CI_Controller {
             redirect();
         }
     }
-    
-    public function UpdatePassw() {
+
+    public function AlterarSenha() {
         $data['success'] = null;
         $data['error'] = null;
-        $this->form_validation->set_rules('passw', 'Senha', 'required|min_length[6]|trim');
+        $this->form_validation->set_rules('senha', 'Senha', 'required|min_length[6]|trim');
         if ($this->form_validation->run() == FALSE) {
             $data['error'] = validation_errors();
         } else {
             $data = $this->input->post();
-            $this->Usuario_model->update($data);
+            $this->Usuarios_model->Update($data, $this->session->userdata('id'));
             $data['success'] = "Senha alterada com sucesso!";
             $data['error'] = null;
         }
-        $data['user'] = $this->Usuario_model->get($this->session->userdata('id'));
+        $data['usuario'] = $this->Usuarios_model->GetBy($this->session->userdata('id'));
         $this->load->view('alterar-senha', $data);
     }
-    
-    public function URLs() {
-        $this->load->model('Urls_model');
-        $urls = $this->Urls_model->GetAllByUser($this->session->userdata('id'));
-        $data['urls'] = $urls;
+
+    public function Baralhos() {
+        $this->load->model('Baralhos_model');
+        $baralhos = $this->Baralhos_model->GetAllBy($this->session->userdata('id'));
+        $data['baralhos'] = $baralhos;
         $data['error'] = null;
-        $data['short_url'] = false;
-        $this->load->view('minhas-urls', $data);
+        $this->load->view('meus-baralhos', $data);
     }
 
 }

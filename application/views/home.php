@@ -6,21 +6,12 @@
         <p>Estude, Avalie e Jogue.</p>
     </div>
     <div class="row">
-        <!--<div class="col-md-8 col-md-offset-2">
-            <?php if ($error) { ?>
-                <div class="alert alert-danger" role="alert"><?= $error ?></div>
-            <?php } ?>
-            <form action="<?= base_url() ?>" method="POST">
-                <label class="col-md-8 col-md-offset-2">
-                    <input type="text" class="form-control" placeholder="URL" name="address"/>
-                </label>
-                <label class="col-md-2"><input type="submit" class="btn btn-success" value="Encurtar"/></label>
-            </form>
-        </div>-->
-        <div class="col-md-8 col-md-offset-2 col-sm-12">
-            <?php if ($short_url) { ?>
-                <p class="text-center"><a href="<?= $short_url ?>" target="_blank"><?= $short_url ?></a></p>
-            <?php } ?>
+        <div class="col-md-8 col-md-offset-2">
+            <?php foreach ($baralhos as $baralho): ?>
+                <a href="<?php echo base_url('baralho/'.$baralho->id) ?>">
+                    <?php echo $baralho->nome ?>
+                </a>
+            <?php endforeach ?>
         </div>
     </div>
 </div>
