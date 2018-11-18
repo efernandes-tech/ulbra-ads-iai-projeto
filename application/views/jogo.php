@@ -17,7 +17,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
                 <div class="col-md-12 div-icon-deck">
-                    <img src="<?php echo base_url('assets/img/icon-tema-mat-64.png') ?>">
+                    <img src="<?php echo base_url('assets/img/'.$baralho->tema_icon.'-64.png') ?>">
                 </div>
                 <div class="col-md-12 text-center">
                     <h3><?php echo $baralho->nome ?></h3>
@@ -28,7 +28,9 @@
                 </div>
                 <div class="col-md-12 div-btn-jogar">
                     <a class="btn btn-primary" href="<?php echo base_url('jogar/'.$baralho->id) ?>">
-                        Iniciar Jogo
+                        Iniciar o Jogo
+                        &nbsp;
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     </a>
                 </div>
             </div>

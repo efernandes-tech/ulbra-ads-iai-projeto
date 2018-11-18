@@ -126,8 +126,8 @@ $(document).ready(function() {
         $('#btnMostrarVerso').removeClass('hide');
 
         if (contCartas == totalCartas) {
-            alert('Fim...');
-            window.location.href = $('base').attr('href') + '/meus-baralhos';
+            alert('Cartas revisadas.');
+            window.location.href = $('base').attr('href') + 'meus-baralhos';
         }
     });
 

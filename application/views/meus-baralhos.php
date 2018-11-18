@@ -31,7 +31,7 @@
                                     <a href="<?php echo base_url('revisar/'.$baralho->id) ?>" class="btn btn-info">
                                         <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
                                     </a>
-                                    <a href="<?php echo base_url('jogar/'.$baralho->id) ?>" class="btn btn-info">
+                                    <a href="<?php echo base_url('jogo/'.$baralho->id) ?>" class="btn btn-info">
                                         <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
                                     </a>
                                     <a href="<?php echo base_url('baralho/'.$baralho->id) ?>" class="btn btn-primary">

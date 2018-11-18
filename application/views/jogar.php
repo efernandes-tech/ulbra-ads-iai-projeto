@@ -7,7 +7,7 @@
     width: 200px;
     height: 200px;
     border: 0.5px solid black;
-    margin: 2.5px;
+    margin: 10px;
     box-sizing: border-box;
     background-image: url(<?php echo base_url('assets/img/quadro-200.png') ?>);
     background-size: cover;
@@ -17,6 +17,7 @@
     font-family: sans-serif;
     color: white;
     font-size: 20px;
+    width: 180px;
 }
 .container-flex {
     width: 100%;
@@ -99,6 +100,18 @@
             </div>
         </div>
     <?php endforeach ?>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <hr>
+        <a href="<?php echo base_url('jogo/'.$baralho->id) ?>" class="btn btn-warning">
+            Sair do Jogo
+            &nbsp;
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </a>
+        <hr>
+    </div>
 </div>
 
 <script type="text/javascript">

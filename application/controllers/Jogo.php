@@ -13,7 +13,13 @@ class Jogo extends CI_Controller {
         }
         $this->load->model('Baralhos_model');
 
-        $data['baralho'] = $this->Baralhos_model->GetBy($id);
+        $baralho = $this->Baralhos_model->GetBy($id);
+
+        if ($baralho) {
+            $data['baralho'] = $baralho;
+        } else {
+            redirect(base_url(),'refresh');
+        }
 
         $this->load->view('jogo', $data);
     }

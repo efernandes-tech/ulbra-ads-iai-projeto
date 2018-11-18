@@ -8,17 +8,25 @@ class Tema extends CI_Controller {
     }
 
     public function Index($id = false) {
+        if (!$id) {
+            redirect(base_url(), 'refresh');
+        }
+
+        $data['id'] = $id;
+
         $this->load->model('Temas_model');
 
         $data['temas'] = $this->Temas_model->GetAll();
 
-        if ($id) {
-            $this->load->model('Baralhos_model');
+        $this->load->model('Baralhos_model');
 
-            $data['baralhos'] = $this->Baralhos_model->GetAllPublicBy($id);
+        $baralhos = $this->Baralhos_model->GetAllPublicBy($id);
+
+        if ($baralhos) {
+            $data['baralhos'] = $baralhos;
+        } else {
+            redirect(base_url(),'refresh');
         }
-
-        $data['id'] = $id;
 
         $this->load->view('tema', $data);
     }

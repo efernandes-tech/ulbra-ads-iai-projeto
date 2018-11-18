@@ -8,17 +8,24 @@
                 <?php echo $usuario->email; ?>
             </label>
             <label class="col-md-12">
-                <input type="password" class="form-control" placeholder="Nova Senha" name="senha" required/>
+                <input type="password" class="form-control" placeholder="Nova Senha" name="senha" required autofocus />
             </label>
-            <label class="col-md-12"><input type="submit" class="btn btn-success" value="Alterar"/></label>
+            <label class="col-md-12"><input type="submit" class="btn btn-primary btn-block" value="Alterar"/></label>
         </form>
     </div>
     <div class="col-md-4 col-md-offset-4">
+        <br>
         <?php if ($error): ?>
-            <div class="alert alert-danger" role="alert"><?php echo $error; ?></div>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $error; ?>
+            </div>
         <?php endif; ?>
         <?php if ($success): ?>
-            <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $success; ?>
+            </div>
         <?php endif; ?>
     </div>
 </div>
