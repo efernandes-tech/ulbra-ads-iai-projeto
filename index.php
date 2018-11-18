@@ -55,6 +55,7 @@
  */
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 	define('MY_BASEURL', isset($_SERVER['MY_BASEURL']) ? $_SERVER['MY_BASEURL'] : 'http://localhost/ulbra-ads-iai-projeto/');
+	define('MY_DATABASE', isset($_SERVER['MY_DATABASE']) ? $_SERVER['MY_DATABASE'] : 'default');
 
 /*
  *---------------------------------------------------------------
