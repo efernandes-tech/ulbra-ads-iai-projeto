@@ -4,12 +4,11 @@
 .div-icon-deck {
     text-align: center;
     margin-top: 2em;
-}
-.icon-deck {
-    font-size: 75px;
+    margin-bottom: 1em;
 }
 .div-btn-jogar {
     text-align: center;
+    margin-top: 2em;
 }
 </style>
 
@@ -17,16 +16,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
-                <div class="col-md-2 div-icon-deck">
-                    <span class="glyphicon glyphicon-book icon-deck" aria-hidden="true"></span>
+                <div class="col-md-12 div-icon-deck">
+                    <img src="<?php echo base_url('assets/img/icon-tema-mat-64.png') ?>">
                 </div>
-                <div class="col-md-10">
-                    <h3>
-                        <?php echo $baralho->nome ?>
-                    </h3>
-                    <p>
-                        <?php echo $baralho->descricao ?>
-                    </p>
+                <div class="col-md-12 text-center">
+                    <h3><?php echo $baralho->nome ?></h3>
+                </div>
+                <div class="col-md-12">
+                    <label>Descrição:</label>
+                    <p><?php echo $baralho->descricao ?></p>
                 </div>
                 <div class="col-md-12 div-btn-jogar">
                     <a class="btn btn-primary" href="<?php echo base_url('jogar/'.$baralho->id) ?>">

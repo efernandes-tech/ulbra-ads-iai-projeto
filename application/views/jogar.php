@@ -1,13 +1,23 @@
 <?php $this->load->view('commons/header'); ?>
 
+<input type="hidden" id="baralho_id" value="<?php echo $baralho->id ?>">
+
 <style type="text/css" media="screen">
 .carta {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    border: 0.5px solid black;
+    margin: 2.5px;
     box-sizing: border-box;
+    background-image: url(<?php echo base_url('assets/img/quadro-200.png') ?>);
+    background-size: cover;
+    text-align: center;
 }
-
+.texto {
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
 .container-flex {
     width: 100%;
     display: flex;
@@ -17,18 +27,13 @@
     align-items: center;
     align-content: stretch;
 }
-
 /* O container geral define a perspectiva. */
 .flip-container {
     perspective: 1000;
 }
-/* Vira os containers frente e verso quando o mouse passa em cima. */
-/*.flip-container:hover .flipper, .flip-container.hover .flipper {*/
-    /*transform: rotateY(180deg);*/
-/*}*/
 .front, .back {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 /* Define a velocidade da transição. */
 .flipper {
@@ -65,13 +70,17 @@
                 <tbody>
                     <tr>
                         <th scope="row" width="15%">Tempo</th>
-                        <td class="text-center" width="18.3%">10:00:00</td>
-                        <th scope="row" width="15%">Combinações</th>
                         <td class="text-center" width="18.3%">
-                            <span id="contComb">1</span> / <span id="totalComb">5</span>
+                            <span id="cronometro">00:05:00</span>
                         </td>
                         <th scope="row" width="15%">Pontos</th>
-                        <td class="text-center" width="18.3%">1</td>
+                        <td class="text-center" width="18.3%">
+                            <span id="pontos">0</span>
+                        </td>
+                        <th scope="row" width="15%">Combinações</th>
+                        <td class="text-center" width="18.3%">
+                            <span id="contComb">0</span> / <span id="totalComb"><?php echo $totalComb ?></span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -83,33 +92,25 @@
     <?php foreach ($cartas as $carta): ?>
         <div class="carta flipper virada" data-carta_id="<?php echo $carta->id ?>">
             <div class="front">
-                ...
+                &nbsp;
             </div>
-            <div class="back">
-                <?php echo $carta->frente ?>
-            </div>
-        </div>
-        <div class="carta flipper virada" data-carta_id="<?php echo $carta->id ?>">
-            <div class="front">
-                ...
-            </div>
-            <div class="back">
-                <?php echo $carta->verso ?>
+            <div class="back container-flex">
+                <span class="texto"><?php echo $carta->conteudo ?></span>
             </div>
         </div>
     <?php endforeach ?>
 </div>
 
 <script type="text/javascript">
+var cronometro = null;
+
 function confereCartas() {
     let cartas = $('.desvirada');
 
     if (cartas.length == 2) {
-        alert('Conferindo cartas...')
         let cartaA = $(cartas[0]);
         let cartaB = $(cartas[1]);
-        // alert(cartaA.attr('data-carta_id'))
-        // alert(cartaB.attr('data-carta_id'))
+
         if (cartaA.attr('data-carta_id') != cartaB.attr('data-carta_id')) {
             $('.desvirada').css({
                 transform: ''
@@ -117,6 +118,17 @@ function confereCartas() {
             $('.desvirada').addClass('virada');
             $('.desvirada').removeClass('desvirada');
         } else {
+            let tempo = $('#cronometro').html();
+            tempo = tempo.split(':');
+            let h = parseInt(tempo[0]);
+            let m = parseInt(tempo[1]);
+            let s = parseInt(tempo[2]);
+            let seg = (h * 60 * 60) + (m * 60) + (s);
+
+            let pts = parseInt($("#pontos").html());
+            pts += seg;
+            $("#pontos").html(pts);
+
             cartaA.removeClass('desvirada');
             cartaA.addClass('block');
             cartaB.removeClass('desvirada');
@@ -125,13 +137,42 @@ function confereCartas() {
             let contComb = parseInt($("#contComb").html());
             let totalComb = parseInt($("#totalComb").html());
 
-            $('#contComb').html(contComb+1);
+            $('#contComb').html(++contComb);
 
             if (contComb == totalComb) {
-                alert('Fim...');
-                window.location.reload();
+                alert('Parabéns, você fez ' + pts + ' pontos!');
+                clearInterval(cronometro);
+                window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
             }
         }
+    }
+}
+
+function iniciarCronometro() {
+    let tempo = $('#cronometro').html();
+    tempo = tempo.split(':');
+    let h = parseInt(tempo[0]);
+    let m = parseInt(tempo[1]);
+    let s = parseInt(tempo[2]);
+    s--;
+    if (s < 0) {
+        m--;
+        s = 59;
+    }
+    if (m < 0) {
+        h--;
+        m = 59;
+    }
+    if (h < 0) {
+        alert('Game Over!');
+        clearInterval(cronometro);
+        window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
+    } else {
+        h = ('00' + h).slice(-2);
+        m = ('00' + m).slice(-2);
+        s = ('00' + s).slice(-2);
+        console.log(h + ':' + m + ':' + s)
+        $('#cronometro').html(h + ':' + m + ':' + s);
     }
 }
 
@@ -139,21 +180,21 @@ $(document).ready(function() {
 
     $(document).on('click', '.carta', function(event) {
         event.preventDefault();
+        let cartas = $('.desvirada');
+        if (cartas.length == 2) {
+            return false;
+        }
         if ($(this).hasClass('virada')) {
             $(this).css({
                 transform: 'rotateY(180deg)'
             });
             $(this).addClass('desvirada');
             $(this).removeClass('virada');
-        // } else {
-        //     $(this).css({
-        //         transform: ''
-        //     });
-        //     $(this).removeClass('desvirada');
-        //     $(this).addClass('virada');
         }
-        setTimeout(function() { confereCartas() }, 600);
+        setTimeout(function() { confereCartas() }, 1000 * 3);
     });
+
+    cronometro = setInterval(iniciarCronometro, 1000);
 
 });
 </script>

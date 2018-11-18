@@ -26,7 +26,23 @@ class Jogo extends CI_Controller {
         $this->load->model('Cartas_model');
 
         $data['baralho'] = $this->Baralhos_model->GetBy($id);
-        $data['cartas'] = $this->Cartas_model->GetAllBy($id);
+        // Pega cartas do baralho.
+        $cartas = $this->Cartas_model->GetAllBy($id);
+        $data['totalComb'] = 0;
+        // Separa frente e verso.
+        foreach ($cartas as $carta) {
+            $data['cartas'][] = (object) array(
+                'id' => $carta->id,
+                'conteudo' => $carta->frente,
+            );
+            $data['cartas'][] = (object) array(
+                'id' => $carta->id,
+                'conteudo' => $carta->verso,
+            );
+            $data['totalComb']++;
+        }
+        // Mistura cartas.
+        shuffle($data['cartas']);
 
         $this->load->view('jogar', $data);
     }
