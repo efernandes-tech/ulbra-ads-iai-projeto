@@ -12,21 +12,19 @@ class Tema extends CI_Controller {
             redirect(base_url(), 'refresh');
         }
 
-        $data['id'] = $id;
-
         $this->load->model('Temas_model');
 
-        $data['temas'] = $this->Temas_model->GetAll();
+        $data['tema'] = $this->Temas_model->GetBy($id);
+
+        if (!$data['tema']) {
+            redirect(base_url(), 'refresh');
+        }
 
         $this->load->model('Baralhos_model');
 
-        $baralhos = $this->Baralhos_model->GetAllPublicBy($id);
+        $data['baralhos'] = $this->Baralhos_model->GetAllPublicBy($id);
 
-        if ($baralhos) {
-            $data['baralhos'] = $baralhos;
-        } else {
-            redirect(base_url(),'refresh');
-        }
+        $data['temas'] = $this->Temas_model->GetAll();
 
         $this->load->view('tema', $data);
     }

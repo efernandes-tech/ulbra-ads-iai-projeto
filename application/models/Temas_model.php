@@ -8,9 +8,10 @@ class Temas_model extends CI_Model {
     }
 
     function GetBy($id) {
-        $this->db->select('*')
-            ->from('temas')
-            ->where('id', $id);
+        $this->db->select('t.*')
+            ->from('temas t')
+            ->where('t.id', $id)
+            ->order_by('t.ordem ASC');
         $result = $this->db->get()->result();
         if ($result) {
             return $result[0];
@@ -38,8 +39,9 @@ class Temas_model extends CI_Model {
     ///// /////
 
     function GetAll() {
-        $this->db->select('*')
-            ->from('temas');
+        $this->db->select('t.*')
+            ->from('temas t')
+            ->order_by('t.ordem ASC');
         $result = $this->db->get()->result();
         if ($result) {
             return $result;

@@ -27,9 +27,9 @@
                             </p>
                             <div class="right">
                                 <a class="btn btn-info" href="<?php echo base_url('jogo/'.$baralho->id) ?>">
-                                    <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+                                    Jogo da Memória
                                     &nbsp;
-                                    Jogar
+                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </div>
@@ -57,5 +57,7 @@
         </div>
     </div>
 </div>
+
+<br>
 
 <?php $this->load->view('commons/footer'); ?>

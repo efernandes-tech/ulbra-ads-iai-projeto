@@ -41,19 +41,21 @@
                     <a class="navbar-brand" href="<?php echo base_url() ?>">
                         <img src="<?php echo base_url('assets/img/logo-24-color-1.png') ?>" alt="Logo" class="home-logo">
                         MemoryFlashGame
-                        &nbsp;|&nbsp;
-                        <span class="text-size-12">Cartões Educativos e Jogo da Memória</span>
+                        <span class="text-size-12 hidden-xs">
+                            &nbsp;|&nbsp;
+                            Cartões Educativos e Jogo da Memória
+                        </span>
                     </a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="<?php echo base_url() ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="<?php echo base_url() ?>"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
                         <?php if ($this->session->userdata('logged')) { ?>
-                            <li><a href="<?php echo base_url('meus-baralhos') ?>"><span class="glyphicon glyphicon-book"></span> Meus Baralhos</a></li>
-                            <li><a href="<?php echo base_url('alterar-senha') ?>"><span class="glyphicon glyphicon-asterisk"></span> Alterar Senha</a></li>
-                            <li><a href="<?php echo base_url('logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+                            <li><a href="<?php echo base_url('meus-baralhos') ?>"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Meus Baralhos</a></li>
+                            <li><a href="<?php echo base_url('alterar-senha') ?>"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;Alterar Senha</a></li>
+                            <li><a href="<?php echo base_url('logout') ?>"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Sair</a></li>
                         <?php } else { ?>
-                            <li><a href="<?php echo base_url('login') ?>"><span class="glyphicon glyphicon-log-in"></span> Login/Cadastro</a></li>
+                            <li><a href="<?php echo base_url('login') ?>"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login/Cadastro</a></li>
                         <?php } ?>
                     </ul>
                 </div>
