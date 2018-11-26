@@ -67,6 +67,12 @@ $route['tema/(:num)'] = "Tema/Index/$1";
 $route['baralho/(:num)'] = "Baralho/Index/$1";
 $route['salvar-baralho'] = "Baralho/Salvar";
 $route['revisar/(:num)'] = "Baralho/Revisar/$1";
+$route['deletar/baralho/(:num)'] = "Baralho/Deletar/$1";
 
 $route['jogo/(:num)'] = "Jogo/Index/$1";
 $route['jogar/(:num)'] = "Jogo/Jogar/$1";
+
+$route['cartas/baralho'] = "Carta/Index";
+$route['cartas/baralho/(:num)'] = "Carta/Index/$1";
+$route['carta/(:num)'] = "Carta/Ver/$1/";
+$route['carta/(:num)/(:num)'] = "Carta/Ver/$1/$2";

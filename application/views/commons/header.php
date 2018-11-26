@@ -13,13 +13,11 @@
 
         <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
         <link href="<?php echo base_url('assets/bootstrap/css/bootstrap-theme.min.css') ?>" rel="stylesheet">
-
-        <link href="<?php echo base_url('assets/css/layout.css') ?>" rel="stylesheet">
+        <link href="<?php echo base_url('assets/plugins/chosen/chosen.min.css') ?>" rel="stylesheet">
 
         <script src="<?php echo base_url('assets/jquery/jquery-3.3.1.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
-
-        <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+        <script src="<?php echo base_url('assets/plugins/chosen/chosen.jquery.min.js') ?>"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +25,8 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <link href="<?php echo base_url('assets/css/layout.css') ?>" rel="stylesheet">
+        <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">

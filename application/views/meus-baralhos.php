@@ -1,5 +1,11 @@
 <?php $this->load->view('commons/header'); ?>
 
+<style type="text/css">
+form {
+    margin-left: 2.5px;
+}
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
@@ -18,7 +24,7 @@
                             <th>Nome</th>
                             <th>Tema</th>
                             <th>Descrição</th>
-                            <th class="text-right">Ações</th>
+                            <th class="text-right" width="23%">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,9 +43,14 @@
                                     <a href="<?php echo base_url('baralho/'.$baralho->id) ?>" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
-                                    <a href="<?php echo base_url('meus-baralhos') ?>" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    <a href="<?php echo base_url('cartas/baralho/'.$baralho->id) ?>" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
                                     </a>
+                                    <form action="<?php echo base_url('deletar/baralho/'.$baralho->id); ?>" method="POST" class="right">
+                                        <button type="submit" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

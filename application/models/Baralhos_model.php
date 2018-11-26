@@ -49,6 +49,12 @@ class Baralhos_model extends CI_Model {
         return $this->GetBy($id);
     }
 
+    function Delete($id) {
+        $this->db->where('id', $id);
+        $result = $this->db->delete('baralhos');
+        return $result;
+    }
+
     ///// /////
 
     function GetAllPublic() {
