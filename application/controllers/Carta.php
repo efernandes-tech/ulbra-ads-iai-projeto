@@ -49,58 +49,48 @@ class Carta extends CI_Controller
     }
 
     public function Salvar() {
-        // $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[3]|trim');
-        // $this->form_validation->set_rules('usuario_id', 'Usuario', 'required');
-        // $this->form_validation->set_rules('tema_id', 'Tema', 'required');
-        // $this->form_validation->set_rules('descricao', 'Descrição', 'required|min_length[3]|trim');
-        // $this->form_validation->set_rules('revisao_facil', 'Dias Revisao - Facil', 'required|min_length[1]|trim');
-        // $this->form_validation->set_rules('revisao_bom', 'Dias Revisao - Bom', 'required|min_length[1]|trim');
-        // $this->form_validation->set_rules('revisao_dificil', 'Dias Revisao - Dificil', 'required|min_length[1]|trim');
-        // if ($this->form_validation->run() == FALSE) {
-        //     $data['error'] = validation_errors();
-        // } else {
-        //     $dataRegister = $this->input->post();
-        //     $id = $dataRegister['id'];
-        //     if ($id) {
-        //         // Editar.
-        //         unset($dataRegister['id']);
-        //         $dataRegister['updated'] = date('Y-m-d H:i:s');
-        //         $res = $this->Baralhos_model->Update($dataRegister, $id);
-        //     } else {
-        //         // Cadastrar.
-        //         $dataRegister['created'] = date('Y-m-d H:i:s');
-        //         $res = $this->Baralhos_model->Insert($dataRegister);
-        //     }
-        //     if ($res) {
-        //         $data['error'] = null;
-        //     } else {
-        //         $data['error'] = "Não foi possível cadastrar o baralho.";
-        //     }
-        // }
+        $this->form_validation->set_rules('frente', 'Frente', 'required|trim');
+        $this->form_validation->set_rules('verso', 'Verso', 'required|trim');
+        $this->form_validation->set_rules('baralho_id', 'Baralho', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $data['error'] = validation_errors();
+        } else {
+            $dataRegister = $this->input->post();
+            $id = $dataRegister['id'];
+            if ($id) {
+                // Editar.
+                unset($dataRegister['id']);
+                $dataRegister['updated'] = date('Y-m-d H:i:s');
+                $res = $this->Cartas_model->Update($dataRegister, $id);
+            } else {
+                // Cadastrar.
+                $dataRegister['created'] = date('Y-m-d H:i:s');
+                $res = $this->Cartas_model->Insert($dataRegister);
+            }
+            if ($res) {
+                $data['error'] = null;
+            } else {
+                $data['error'] = "Não foi possível cadastrar a carta.";
+            }
+        }
 
-        // if ($data['error']) {
-        //     $this->load->model('Temas_model');
+        if ($data['error']) {
+            $data['title'] = 'Cadastrar';
 
-        //     $data['temas'] = $this->Temas_model->GetAll();
+            $data['carta'] = (object) $this->input->post();
 
-        //     $data['title'] = 'Cadastrar';
-
-        //     $data['baralho'] = (object) $this->input->post();
-
-        //     $this->load->view('baralho', $data);
-        // } else {
-        //     redirect(base_url('meus-baralhos'),'refresh');
-        // }
+            $this->load->view('carta', $data);
+        } else {
+            redirect(base_url('cartas/baralho/'.$dataRegister['baralho_id']),'refresh');
+        }
     }
 
     public function Deletar($id = false) {
-        // if (!$id) {
-        //     redirect(base_url(), 'refresh');
-        // }
-        // $this->load->model('Baralhos_model');
+        if (!$id) {
+            redirect(base_url(), 'refresh');
+        }
+        $this->Cartas_model->Delete($id);
 
-        // $this->Baralhos_model->Delete($id);
-
-        // redirect(base_url('meus-baralhos'),'refresh');
+        redirect(base_url('cartas/baralho/'.$this->input->post('baralho_id')),'refresh');
     }
 }

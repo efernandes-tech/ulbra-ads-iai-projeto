@@ -14,7 +14,7 @@
                     <h3><?php echo $baralho->nome ?></h3>
                 </div>
                 <div class="col-md-12">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th colspan="6" class="text-center">Estatísticas</th>
@@ -22,12 +22,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row" width="20%">Total de Cartas</th>
-                                <td class="text-center">1</td>
-                                <th scope="row" width="20%">Cartas para Revisar</th>
-                                <td class="text-center">1</td>
-                                <th scope="row" width="20%">Cartas Novas</th>
-                                <td class="text-center">1</td>
+                                <th scope="row" width="25%">Total de Cartas do Baralho</th>
+                                <td class="text-center"><?php echo count($cartasBaralho) ?></td>
+                                <th scope="row" width="25%">Cartas para Revisar</th>
+                                <td class="text-center"><?php echo count($cartasRevisar) ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -35,12 +33,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <span id="contCartas">1</span> / <span id="totalCartas"><?php echo count($cartas) ?></span>
+                    <span id="contCartas">1</span> / <span id="totalCartas"><?php echo count($cartasRevisar) ?></span>
                 </div>
             </div>
             <div class="row div-revisao">
                 <div class="col-md-12">
-                    <?php foreach ($cartas as $carta): ?>
+                    <?php foreach ($cartasRevisar as $carta): ?>
                         <div class="carta" data-carta-id="<?php echo $carta->id ?>">
                             <div class="panel panel-default hide carta-frente">
                                 <div class="panel-body">
@@ -67,17 +65,17 @@
             <br>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="<?php echo $baralho->revisao_facil ?>">
                         Facil
-                        <span class="badge">1 dia</span>
+                        <span class="badge"><?php echo $baralho->revisao_facil > 1 ? $baralho->revisao_facil.' dias' : $baralho->revisao_facil.' dia' ?></span>
                     </button>
-                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="<?php echo $baralho->revisao_bom ?>">
                         Bom
-                        <span class="badge">3 dias</span>
+                        <span class="badge"><?php echo $baralho->revisao_bom > 1 ? $baralho->revisao_bom.' dias' : $baralho->revisao_bom.' dia' ?></span>
                     </button>
-                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="123">
+                    <button type="button" class="btn btn-default btnRevisao" data-tempo-rev="<?php echo $baralho->revisao_dificil ?>">
                         Difícil
-                        <span class="badge">7 dias</span>
+                        <span class="badge"><?php echo $baralho->revisao_dificil > 1 ? $baralho->revisao_dificil.' dias' : $baralho->revisao_dificil.' dia' ?></span>
                     </button>
                 </div>
             </div>
@@ -86,8 +84,28 @@
 </div>
 
 <script type="text/javascript">
-function salvarResposta() {
-    alert('Salvando...');
+function salvarResposta(carta, revisao) {
+    $.ajax({
+        url: 'salvar-revisao',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            carta_id: carta.attr('data-carta-id'),
+            revisao: revisao.attr('data-tempo-rev')
+        },
+    })
+    .done(function(data) {
+        console.log("success");
+        console.log(data);
+        if (data)
+            bootbox.alert("Revisão salva com sucesso!");
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
 }
 $(document).ready(function() {
 
@@ -111,7 +129,7 @@ $(document).ready(function() {
         let contCartas = parseInt($("#contCartas").html());
         let totalCartas = parseInt($("#totalCartas").html());
 
-        salvarResposta();
+        salvarResposta($('.current'), $(this));
 
         $('#contCartas').html(contCartas+1);
 
@@ -126,8 +144,12 @@ $(document).ready(function() {
         $('#btnMostrarVerso').removeClass('hide');
 
         if (contCartas == totalCartas) {
-            alert('Cartas revisadas.');
-            window.location.href = $('base').attr('href') + 'meus-baralhos';
+            bootbox.alert({
+                message: "Cartas revisadas.",
+                callback: function() {
+                    window.location.href = $('base').attr('href') + 'meus-baralhos';
+                }
+            });
         }
     });
 

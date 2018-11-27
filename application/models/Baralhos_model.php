@@ -57,11 +57,12 @@ class Baralhos_model extends CI_Model {
 
     ///// /////
 
-    function GetAllPublic() {
+    function GetAllPublicTop3() {
         $this->db->select('b.*, t.nome AS tema, t.icon AS tema_icon')
             ->from('baralhos b')
             ->join('temas t', 't.id = b.tema_id', 'inner')
-            ->where('publico', 1);
+            ->where('publico', 1)
+            ->limit(3);
         $result = $this->db->get()->result();
         if ($result) {
             return $result;

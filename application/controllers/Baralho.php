@@ -43,13 +43,18 @@ class Baralho extends CI_Controller
 
     public function Revisar($id = false) {
     	if (!$id) {
-    		redirect(base_url(), 'refresh');
-    	}
+            redirect(base_url(), 'refresh');
+        }
         $this->load->model('Baralhos_model');
         $this->load->model('Cartas_model');
 
         $data['baralho'] = $this->Baralhos_model->GetBy($id);
-        $data['cartas'] = $this->Cartas_model->GetAllBy($id);
+        $data['cartasBaralho'] = $this->Cartas_model->GetAllBy($id);
+        $data['cartasRevisar'] = $this->Cartas_model->GetAllReview($id);
+
+        if (!$data['cartasRevisar']) {
+            redirect(base_url('meus-baralhos'), 'refresh');
+        }
 
         $this->load->view('revisar', $data);
     }
@@ -108,5 +113,16 @@ class Baralho extends CI_Controller
         $this->Baralhos_model->Delete($id);
 
         redirect(base_url('meus-baralhos'),'refresh');
+    }
+
+    public function SalvarRevisao()
+    {
+        $dataRegister = $this->input->post();
+
+        $this->load->model('Cartas_model');
+
+        $result = $this->Cartas_model->SalvarRevisao($dataRegister);
+
+        echo json_encode($result);
     }
 }

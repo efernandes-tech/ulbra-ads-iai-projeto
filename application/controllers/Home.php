@@ -12,7 +12,7 @@ class Home extends CI_Controller {
         $this->load->model('Baralhos_model');
 
         $data['temas'] = $this->Temas_model->GetAll();
-        $data['baralhos'] = $this->Baralhos_model->GetAllPublic();
+        $data['baralhos'] = $this->Baralhos_model->GetAllPublicTop3();
 
         $this->load->view('home', $data);
     }

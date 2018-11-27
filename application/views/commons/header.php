@@ -18,6 +18,7 @@
         <script src="<?php echo base_url('assets/jquery/jquery-3.3.1.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/plugins/chosen/chosen.jquery.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/plugins/bootbox/bootbox.min.js') ?>"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

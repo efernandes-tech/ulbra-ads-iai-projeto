@@ -36,6 +36,7 @@ form {
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
                                     <form action="<?php echo base_url('deletar/carta/'.$carta->id); ?>" method="POST" class="right">
+                                        <input type="hidden" name="baralho_id" id="baralho_id" value="<?php echo $baralho_id ?>">
                                         <button type="submit" class="btn btn-danger">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
