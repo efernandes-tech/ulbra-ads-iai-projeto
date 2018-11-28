@@ -37,6 +37,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
+                        <a href="<?php echo base_url('cartas/baralho/'.$carta->baralho_id) ?>" class="btn btn-default right" style="margin-left: 10px;">Voltar</a>
                         <button type="submit" class="btn btn-primary right"><?php echo $title ?> Carta</button>
                     </div>
                 </div>

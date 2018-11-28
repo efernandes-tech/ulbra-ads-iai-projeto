@@ -3,6 +3,10 @@
 <input type="hidden" id="baralho_id" value="<?php echo $baralho->id ?>">
 
 <style type="text/css" media="screen">
+#cronometro {
+    color: red;
+    font-weight: bold;
+}
 .carta {
     width: 200px;
     height: 200px;
@@ -63,11 +67,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th colspan="6" class="text-center">Estatísticas</th>
-                    </tr>
-                </thead>
+                <!-- <thead> -->
+                    <!-- <tr> -->
+                        <!-- <th colspan="6" class="text-center">Estatísticas</th> -->
+                    <!-- </tr> -->
+                <!-- </thead> -->
                 <tbody>
                     <tr>
                         <th scope="row" width="15%">Tempo</th>
@@ -153,9 +157,13 @@ function confereCartas() {
             $('#contComb').html(++contComb);
 
             if (contComb == totalComb) {
-                alert('Parabéns, você fez ' + pts + ' pontos!');
+                bootbox.alert({
+                    message: 'Parabéns, você fez ' + pts + ' pontos!',
+                    callback: function() {
+                        window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
+                    }
+                });
                 clearInterval(cronometro);
-                window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
             }
         }
     }
@@ -177,9 +185,13 @@ function iniciarCronometro() {
         m = 59;
     }
     if (h < 0) {
-        alert('Game Over!');
+        bootbox.alert({
+            message: 'Game Over!',
+            callback: function() {
+                window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
+            }
+        });
         clearInterval(cronometro);
-        window.location.href = $('base').attr('href') + 'jogo/' + $("#baralho_id").val();
     } else {
         h = ('00' + h).slice(-2);
         m = ('00' + m).slice(-2);

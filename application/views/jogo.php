@@ -33,6 +33,11 @@
                         <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     </a>
                 </div>
+                <div class="col-md-12 text-center">
+                    <br>
+                    <br>
+                    <a href="<?php echo base_url('meus-baralhos') ?>" class="btn btn-default">Voltar</a>
+                </div>
             </div>
         </div>
     </div>

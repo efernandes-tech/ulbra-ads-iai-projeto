@@ -14,6 +14,7 @@ form {
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 Adicionar Carta
             </a>
+            <a href="<?php echo base_url('meus-baralhos') ?>" class="btn btn-default" style="margin-left: 10px;">Voltar</a>
         </div>
         <div class="col-md-12">
             <h3>Cartas do Baralho</h3>

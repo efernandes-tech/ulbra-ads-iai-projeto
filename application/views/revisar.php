@@ -10,6 +10,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <br>
+                    <a href="<?php echo base_url('meus-baralhos') ?>" class="btn btn-default">Voltar</a>
+                </div>
                 <div class="col-md-12">
                     <h3><?php echo $baralho->nome ?></h3>
                 </div>
