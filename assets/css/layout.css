@@ -6,14 +6,13 @@ body {
     font-family: 'Roboto', sans-serif;
     margin-bottom: 60px;
 }
-
 .navbar-default {
     background: #0097A7;
-    color: #B2EBF2;
+    color: #4CEEFF;
 }
 
 .navbar-default a {
-    color: #B2EBF2 !important;
+    color: #4CEEFF !important;
 }
 
 .page-header {
@@ -23,6 +22,7 @@ body {
 
 .page-header p {
     color:#727272;
+    font-weight: bold;
 }
 
 .footer {
@@ -34,7 +34,7 @@ body {
 }
 
 .footer .text-muted {
-    color:#B2EBF2;
+    color:#4CEEFF;
 }
 
 body > .container {
@@ -66,4 +66,36 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
     padding-bottom: 5px;
     text-transform: uppercase;
+}
+
+.text-size-10 { font-size: 10px; }
+.text-size-12 { font-size: 12px; }
+
+.home-logo {
+    float: left;
+    margin-right: 1em;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+.no-link-decoration {
+    text-decoration: none !important;
+}
+
+.chosen-container,
+.chosen-container .chosen-single,
+.chosen-container .chosen-single span {
+    height: 34px ;
+    line-height: 34px;
+}
+.chosen-container {
+    margin-top: 2.5px;
+}
+.chosen-container .chosen-single div b {
+    margin-top: 4px;
 }

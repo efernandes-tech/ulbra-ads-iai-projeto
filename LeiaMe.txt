@@ -1,0 +1,23 @@
+# MemoryFlashGame
+
+- Links onlines para acessar a aplicação:
+	https://ulbra-ads-iai-projeto.herokuapp.com/
+	http://bit.ly/MemoryFG
+
+# Rodar localmente:
+- Executar um software com um servidor Apache, PHP e MySQL.
+	Sugestão:
+		http://www.usbwebserver.net/webserver/
+		http://www.usbwebserver.net/downloads/USBWebserver%20v8.6.zip
+- Executar o programa e adicionar a pasta do projeto na pasta de sistemas do servidor.
+	Pasta da Sugestão:
+		usbwebserver/root
+- Acessar o MySQL deste servidor e importar o arquivo com o banco de dados.
+	ulbra-ads-iai-projeto.sql
+- Acessar pelo navegador o link local da aplicação.
+	http://localhost/ulbra-ads-iai-projeto
+- Se na url voce precisa passar a porta, edite o arquivo "index.php", alterando a url padrao.
+	de:
+		define('MY_BASEURL', isset($_SERVER['MY_BASEURL']) ? $_SERVER['MY_BASEURL'] : 'http://localhost/ulbra-ads-iai-projeto/');
+	para:
+		define('MY_BASEURL', isset($_SERVER['MY_BASEURL']) ? $_SERVER['MY_BASEURL'] : 'http://localhost:8080/ulbra-ads-iai-projeto/');

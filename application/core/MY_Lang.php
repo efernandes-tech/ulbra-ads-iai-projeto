@@ -40,18 +40,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Language Class extension.
- * 
+ *
  * Adds language fallback handling.
- * 
- * When loading a language file, CodeIgniter will load first the english version, 
- * if appropriate, and then the one appropriate to the language you specify. 
- * This lets you define only the language settings that you wish to over-ride 
+ *
+ * When loading a language file, CodeIgniter will load first the english version,
+ * if appropriate, and then the one appropriate to the language you specify.
+ * This lets you define only the language settings that you wish to over-ride
  * in your idiom-specific files.
- * 
- * This has the added benefit of the language facility not breaking if a new 
- * language setting is added to the built-in ones (english), but not yet 
+ *
+ * This has the added benefit of the language facility not breaking if a new
+ * language setting is added to the built-in ones (english), but not yet
  * provided for in one of the translations.
- * 
+ *
  * To use this capability, transparently, copy this file (MY_Lang.php)
  * into your application/core folder.
  *
@@ -65,7 +65,7 @@ class MY_Lang extends CI_Lang {
 
 	/**
 	 * Refactor: base language provided inside system/language
-	 * 
+	 *
 	 * @var string
 	 */
 	public $base_language = 'english';
@@ -81,7 +81,7 @@ class MY_Lang extends CI_Lang {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Load a language file, with fallback to english.
 	 *
@@ -190,7 +190,7 @@ class MY_Lang extends CI_Lang {
 		log_message('info', 'Language file loaded: language/' . $idiom . '/' . $langfile);
 		return TRUE;
 	}
-	
+
 }
 
 // --------------------------------------------------------------------

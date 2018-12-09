@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,13 +29,13 @@ function compress() {
             )
         )
         %Six';
-    
+
     $new_buffer = preg_replace($re, " ", $buffer);
-    
+
     if ($new_buffer === null) {
         $new_buffer = $buffer;
     }
-    
+
     $CI->output->set_output($new_buffer);
     $CI->output->_display();
 }

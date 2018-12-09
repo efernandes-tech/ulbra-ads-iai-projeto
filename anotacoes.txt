@@ -1,4 +1,22 @@
-# ...
+# ulbra-ads-iai-projeto
 
 # Anotações:
-- ...
+- Diversas
+    [] Ajustar responsividade.
+    [] Ajustar cores e icones dos temas.
+- Home
+    [] Listar os 3 baralhos publicos mais jogados.
+    [] Extra - Listar abaixo do tema os top baralhos de cada tema.
+- Temas
+    [] Adicionar paginacao na lista.
+    [] Adicionar pesquisa.
+        - Busca texto completo no nome.
+        - Busca texto completo na descricao.
+- Meus baralhos
+    [] Adicionar paginacao na lista.
+    [] Adicionar pesquisa.
+        - Busca texto completo no nome.
+        - Busca texto completo na descricao.
+    [] Deletar baralho.
+    [] Adicionar baralho.
+    [] Editar baralho.
